@@ -10,7 +10,7 @@ const outputBox = document.getElementById('outputBox')
 
 const openGitHubRepoButton = document.getElementById('openGitHubRepoButton')
 
-const baseDiscordApiUrl = 'http://discordapp.com/api/v6' // gonna have to update this every now and then
+const baseDiscordApiUrl = 'https://discordapp.com/api/v6' // gonna have to update this every now and then
 const urlVerificationRegExp = /((http|https)(:\/\/))([a-zA-Z0-9]+[.]{1})?([a-zA-Z0-9]+[.]{1})[a-zA-z0-9]+(\/{1}[a-zA-Z0-9-_]+)*\/?/
 
 let sending = false
