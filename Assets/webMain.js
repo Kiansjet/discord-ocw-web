@@ -34,7 +34,6 @@ function send() {
 		outputBox.placeholder = ''
 
 		// Parse provided data
-		console.log(webhookUrlField.value)
 		const filteredWebhookUrl = webhookUrlField.value.match(urlVerificationRegExp)
 		if (!filteredWebhookUrl) {
 			sendingComplete(false,'Webhook URL field doesn\'t contain a URL. Make sure it has a https:// prefix.')
