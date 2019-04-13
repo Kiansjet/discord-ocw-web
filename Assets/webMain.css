@@ -1,0 +1,183 @@
+/* I'm also very bad at this lang */
+
+/* Core font was originally Google Sans but it wasn't open source at the time of writing */
+@font-face {
+	font-family: Lato;
+	src: url(Lato/Lato-Regular.ttf)
+}
+
+@font-face {
+	font-family: LatoBold;
+	src: url(Lato/Lato-Bold.ttf)
+}
+
+html {
+	background-color: #202225;
+}
+
+body {
+	margin: 0;
+}
+
+.main-container {
+	background-color: #2c2f33;
+	align-content: center;
+	padding: 2rem;
+	padding-bottom: 0;
+	margin: auto;
+	max-width: 30rem;
+	max-height: 85%;
+	filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.4));
+	transition: width .2s, height .2s;
+
+	position: absolute;
+    top: 50%;
+    left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	
+	overflow: auto;
+}
+
+form {
+	text-align: center;
+}
+
+h1,h2,h3,h4 {
+	font-family: LatoBold;
+	text-align: center;
+	color: white;
+	user-select: none;
+	margin-top: 0;
+	margin-bottom: .3rem;
+}
+
+h4 {
+	text-align: left;
+	margin-bottom: .2rem;
+	margin-top: 0;
+	padding: .5rem;
+}
+
+.rainbow-text {
+	background-image: linear-gradient(to left, rgb(255, 0, 255), rgb(0, 255, 255), rgb(0, 255, 0), yellow, orange, red);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	background-size: 800% 800%;
+	animation: rainbow 4s ease infinite;
+}
+@keyframes rainbow { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 25%}
+    100%{background-position:0% 50%}
+}
+
+textarea {
+	font-family: Lato;
+	color: white;
+	background-color: #484C52;
+	border: .05rem solid #202225;
+	transition: border-color .2s;
+	border-radius: .5rem;
+	padding: .5rem;
+	resize: none;
+	margin-top: .2rem;
+	margin-top: 0;
+	margin-bottom: .2rem;
+	outline: none;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	user-select: none;
+}
+
+textarea:focus {
+	border-color: #7289da;
+}
+
+#messageField {
+	resize: vertical;
+	white-space: normal;
+	overflow: auto;
+}
+
+br {
+	user-select: none;
+}
+
+button {
+	font-family: LatoBold;
+	user-select: none;
+	margin-top: .5rem;
+	margin-bottom: .6rem;
+	background-color: #2c2f33;
+	transition: background-color .2s, border-color .2s;
+	color: white;
+	border: .1rem solid #43b581;
+	border-radius: .5rem;
+	padding: .5rem;
+}
+
+button:hover,button:focus {
+	background-color: #43b581;
+}
+
+button:disabled {
+	background-color: #00000000;
+	border-color: #99aab5;
+}
+
+#sendButton {
+	width: 50%;
+}
+
+textarea:disabled {
+	background-color: #202225;
+}
+
+#outputBox {
+	background-color: #202225;
+	border: none;
+	border-radius: 0;
+	height: 5rem;
+	white-space: normal;
+	overflow: auto;
+}
+
+#consoleErrorDiv {
+	user-select: none;
+	font-family: Lato;
+	color: #ffffff;
+	display: inline;
+}
+
+#openDevToolsButton {
+	display: inline;
+	color: #F04747;
+}
+
+#openDevToolsButton:hover {
+	color: #f04747c0;
+}
+
+a {
+	display: block;
+	font-family: Lato;
+	color: #7289da;
+	transition: color .2s;
+	text-align: center;
+	padding: .5rem;
+	margin-top: -.4rem;
+	margin-bottom: .1rem;
+	cursor: pointer;
+	user-select: none;
+}
+
+a:hover {
+	color: #7289dac0;
+	text-decoration: underline;
+}
+
+.invisible {
+	display: none !important;
+}
