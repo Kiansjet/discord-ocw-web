@@ -1,14 +1,4 @@
-const webhookUrlField = document.getElementById('webhookUrlField')
-
-const webhookNameField = document.getElementById('webhookNameField')
-
-const webhookProfilePicField = document.getElementById('webhookProfilePicField')
-
-const messageField = document.getElementById('messageField')
-const sendButton = document.getElementById('sendButton')
-const outputBox = document.getElementById('outputBox')
-
-const openGitHubRepoButton = document.getElementById('openGitHubRepoButton')
+let webhookUrlField,webhookNameField,webhookProfilePicField,messageField,sendButton,outputBox,openGitHubRepoButton
 
 const baseDiscordApiUrl = 'https://discordapp.com/api/v6' // gonna have to update this every now and then
 const urlVerificationRegExp = /((http|https)(:\/\/))([a-zA-Z0-9]+[.]{1})?([a-zA-Z0-9]+[.]{1})[a-zA-z0-9]+(\/{1}[a-zA-Z0-9-_]+)*\/?/
@@ -84,8 +74,10 @@ function send() {
 }
 
 // Load cached form data from cookie if exists and valid
-let formData = Cookies.getJSON('Kiansjet/discord-ocw-web/formData')
+//let formData = Cookies.getJSON('Kiansjet/discord-ocw-web/formData')
+let formData = Cookies.get('Kiansjet/discord-ocw-web/formData')
 if (formData) {
+	formData = JSON.parse(formData)
 	if (typeof(formData.webhookUrl) == 'string') {
 		webhookUrlField.value = formData.webhookUrl
 	}
@@ -110,5 +102,21 @@ window.addEventListener('beforeunload',function(event) {
 	})
 })
 
-// General events
-sendButton.addEventListener('click',send)
+document.addEventListener("DOMContentLoaded",function() {
+	webhookUrlField = document.getElementById('webhookUrlField')
+
+	webhookNameField = document.getElementById('webhookNameField')
+
+	webhookProfilePicField = document.getElementById('webhookProfilePicField')
+
+	messageField = document.getElementById('messageField')
+	sendButton = document.getElementById('sendButton')
+	outputBox = document.getElementById('outputBox')
+
+	openGitHubRepoButton = document.getElementById('openGitHubRepoButton')
+
+	// General events
+	sendButton.addEventListener('click',send)
+})
+
+
