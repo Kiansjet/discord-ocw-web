@@ -73,22 +73,6 @@ function send() {
 	}
 }
 
-// Load cached form data from cookie if exists and valid
-//let formData = Cookies.getJSON('Kiansjet/discord-ocw-web/formData')
-let formData = Cookies.get('Kiansjet/discord-ocw-web/formData')
-if (formData) {
-	formData = JSON.parse(formData)
-	if (typeof(formData.webhookUrl) == 'string') {
-		webhookUrlField.value = formData.webhookUrl
-	}
-	if (typeof(formData.webhookName) == 'string') {
-		webhookNameField.value = formData.webhookName
-	}
-	if (typeof(formData.webhookProfilePic) == 'string') {
-		webhookProfilePicField.value = formData.webhookProfilePic
-	}
-}
-
 // Save form data to cookie on window close
 window.addEventListener('beforeunload',function(event) {
 	Cookies.set('Kiansjet/discord-ocw-web/formData',{
@@ -114,6 +98,22 @@ document.addEventListener("DOMContentLoaded",function() {
 	outputBox = document.getElementById('outputBox')
 
 	openGitHubRepoButton = document.getElementById('openGitHubRepoButton')
+
+	// Load cached form data from cookie if exists and valid
+	//let formData = Cookies.getJSON('Kiansjet/discord-ocw-web/formData')
+	let formData = Cookies.get('Kiansjet/discord-ocw-web/formData')
+	if (formData) {
+		formData = JSON.parse(formData)
+		if (typeof(formData.webhookUrl) == 'string') {
+			webhookUrlField.value = formData.webhookUrl
+		}
+		if (typeof(formData.webhookName) == 'string') {
+			webhookNameField.value = formData.webhookName
+		}
+		if (typeof(formData.webhookProfilePic) == 'string') {
+			webhookProfilePicField.value = formData.webhookProfilePic
+		}
+	}
 
 	// General events
 	sendButton.addEventListener('click',send)
