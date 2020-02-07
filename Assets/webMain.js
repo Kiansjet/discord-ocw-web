@@ -75,11 +75,11 @@ function send() {
 
 // Save form data to cookie on window close
 window.addEventListener('beforeunload',function(event) {
-	Cookies.set('Kiansjet/discord-ocw-web/formData',{
+	Cookies.set('Kiansjet/discord-ocw-web/formData',JSON.stringify({
 		webhookUrl: webhookUrlField.value,
 		webhookName: webhookNameField.value,
 		webhookProfilePic: webhookProfilePicField.value,
-	},{
+	}),{
 		expires: 7, // days
 		path: '', // restricts cookie to this url
 		secure: true, // only load over https
