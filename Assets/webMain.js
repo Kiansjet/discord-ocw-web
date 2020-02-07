@@ -83,6 +83,7 @@ window.addEventListener('beforeunload',function(event) {
 		expires: 7, // days
 		path: '', // restricts cookie to this url
 		secure: true, // only load over https
+		sameSite: "strict", // i think this is already handled with path but ok chrome
 	})
 })
 
