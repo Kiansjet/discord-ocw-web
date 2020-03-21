@@ -61,7 +61,7 @@ function send() {
 				if (request.status >= 200 && request.status <= 299) {
 					sendingComplete(true)
 				} else {
-					sendingComplete(false,`${request.status} ${response.statusText}`)
+					sendingComplete(false,`${request.status} ${request.response.statusText}`)
 				}
 			}
 		}
