@@ -96,6 +96,7 @@ textarea:focus {
 }
 
 #messageField {
+	min-height: 2.1rem;
 	resize: vertical;
 	white-space: normal;
 	overflow: auto;
