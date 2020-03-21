@@ -66,9 +66,9 @@ function send() {
 			}
 		}
 		request.open('POST',`${baseDiscordApiUrl}/webhooks/${webhookId}/${webhookToken}`)
-		//request.setRequestHeader('Content-Type','application/json')
+		request.setRequestHeader('Content-Type','application/json')
 		// CORS Preflight compliance?
-		request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+		//request.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
 		request.send(JSON.stringify(requestBody))
 	}
 }
