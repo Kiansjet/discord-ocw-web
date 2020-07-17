@@ -1,6 +1,7 @@
 let webhookUrlField,webhookNameField,webhookProfilePicField,messageField,sendButton,outputBox,openGitHubRepoButton
 
-const baseDiscordApiUrl = 'https://discordapp.com/api/v6' // gonna have to update this every now and then
+const baseDiscordApiUrl = 'https://discord.com/api/v6' // gonna have to update this every now and then
+const savedFormDataCookieName = "Kiansjet/discord-ocw-web/formDataCookie"
 const urlVerificationRegExp = /((http|https)(:\/\/))([a-zA-Z0-9]+[.]{1})?([a-zA-Z0-9]+[.]{1})[a-zA-z0-9]+(\/{1}[a-zA-Z0-9-_]+)*\/?/
 
 let sending = false
@@ -32,8 +33,8 @@ function send() {
 		webhookUrlField.value = filteredWebhookUrl[0]
 		const parsedUrl = new URL(filteredWebhookUrl[0])
 		const parsedUrlPathname = parsedUrl.pathname.split('/')
-		if (parsedUrl.hostname != 'discordapp.com') {
-			sendingComplete(false,'Webhook url hostname is not discordapp.com')
+		if (parsedUrl.hostname != 'discord.com') {
+			sendingComplete(false,'Webhook url hostname is not discord.com')
 			return
 		} else if (parsedUrlPathname[1] != 'api' || parsedUrlPathname[2] != 'webhooks') {
 			sendingComplete(false,'Invalid webhook url pathname component')
@@ -75,7 +76,7 @@ function send() {
 
 // Save form data to cookie on window close
 window.addEventListener('beforeunload',function(event) {
-	Cookies.set('Kiansjet/discord-ocw-web/formData',JSON.stringify({
+	Cookies.set(savedFormDataCookieName,JSON.stringify({
 		webhookUrl: webhookUrlField.value,
 		webhookName: webhookNameField.value,
 		webhookProfilePic: webhookProfilePicField.value,
@@ -102,7 +103,7 @@ document.addEventListener("DOMContentLoaded",function() {
 
 	// Load cached form data from cookie if exists and valid
 	//let formData = Cookies.getJSON('Kiansjet/discord-ocw-web/formData')
-	let formData = Cookies.get('Kiansjet/discord-ocw-web/formData')
+	let formData = Cookies.get(savedFormDataCookieName)
 	if (formData) {
 		formData = JSON.parse(formData)
 		if (typeof(formData.webhookUrl) == 'string') {
@@ -119,5 +120,3 @@ document.addEventListener("DOMContentLoaded",function() {
 	// General events
 	sendButton.addEventListener('click',send)
 })
-
-
