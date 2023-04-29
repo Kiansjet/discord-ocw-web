@@ -3,6 +3,8 @@ let webhookUrlField,webhookNameField,webhookProfilePicField,messageField,sendBut
 const baseDiscordApiUrl = 'https://discord.com/api/v6' // gonna have to update this every now and then
 const savedFormDataCookieName = "Kiansjet/discord-ocw-web/formDataCookie"
 const urlVerificationRegExp = /((http|https)(:\/\/))([a-zA-Z0-9]+[.]{1})?([a-zA-Z0-9]+[.]{1})[a-zA-z0-9]+(\/{1}[a-zA-Z0-9-_]+)*\/?/
+const DEFAULT_WEBHOOK_DISPLAY_NAME = "Spidey Bot" // New api or whatever since some point doesnt allow empty name args
+// TODO: Instead of this ^ consider fetching the webhook's info first with just the url and pulling the actual name out of that, provide a switch or smth
 
 let sending = false
 
@@ -52,7 +54,7 @@ function send() {
 		// Send request
 		const requestBody = {
 			content: messageField.value,
-			username: webhookNameField.value,
+			username: webhookNameField.value.trim() || DEFAULT_WEBHOOK_DISPLAY_NAME, // This works cuz "" casts to a boolean false, careful casting now
 			avatar_url: webhookProfilePicField.value,
 		}
 		const request = new XMLHttpRequest()
@@ -92,6 +94,7 @@ document.addEventListener("DOMContentLoaded",function() {
 	webhookUrlField = document.getElementById('webhookUrlField')
 
 	webhookNameField = document.getElementById('webhookNameField')
+	webhookNameField.placeholder = `Optional, defaults to "${DEFAULT_WEBHOOK_DISPLAY_NAME}"`
 
 	webhookProfilePicField = document.getElementById('webhookProfilePicField')
 
